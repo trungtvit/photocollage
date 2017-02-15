@@ -24,16 +24,21 @@ public class ScalingImageView extends ImageView {
     }
 
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Drawable mDrawable = getDrawable();
-        if (mDrawable != null) {
-            int mDrawableWidth = mDrawable.getIntrinsicWidth();
-            int mDrawableHeight = mDrawable.getIntrinsicHeight();
-            float actualAspect = (float) mDrawableWidth / (float) mDrawableHeight;
+        final Drawable d = this.getDrawable();
 
-            final int actualWidth = MeasureSpec.getSize(widthMeasureSpec);
-            final int height = (int) (actualWidth / actualAspect);
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
+        if (d != null) {
+            int height = MeasureSpec.getSize(heightMeasureSpec);
+            int width = MeasureSpec.getSize(widthMeasureSpec);
+
+            if (width >= height)
+                height = (int) Math.ceil(width * (float) d.getIntrinsicHeight() / d.getIntrinsicWidth());
+            else
+                width = (int) Math.ceil(height * (float) d.getIntrinsicWidth() / d.getIntrinsicHeight());
+
+            this.setMeasuredDimension(width, height);
+
+        } else {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

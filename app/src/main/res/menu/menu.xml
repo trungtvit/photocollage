@@ -4,6 +4,11 @@
     <item
         android:id="@+id/actionSave"
         android:icon="@drawable/ic_save"
-        android:title=""
+        android:title="@string/save_image"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/actionDelete"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_image"
         app:showAsAction="ifRoom" />
 </menu>

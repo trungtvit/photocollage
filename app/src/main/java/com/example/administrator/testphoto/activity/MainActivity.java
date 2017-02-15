@@ -64,13 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.ratio = ratio;
     }
 
-    public MainActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         File folder = new File(Environment.getExternalStorageDirectory().getPath() + "/PhotoCollage/");
         allFiles = folder.listFiles();

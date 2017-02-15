@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by TrungTV on 02/14/2017.
@@ -120,6 +119,49 @@ public class Utils {
         return height;
     }
 
+    public static float calHeightForBitmap(int ratio, int width) {
+        float height = 0;
+        switch (ratio) {
+            case MainActivity.RATIO_43:
+                height = (width * 3) / 4;
+                break;
+            case MainActivity.RATIO_32:
+                height = (width * 2) / 3;
+                break;
+            case MainActivity.RATIO_169:
+                height = (width * 9) / 16;
+                break;
+            default:
+                height = width;
+                break;
+
+        }
+        return height;
+    }
+
+    public static float calWidthForBitmap(int ratio, int height) {
+        float width = 0;
+        switch (ratio) {
+            case MainActivity.RATIO_34:
+                width = (height * 3) / 4;
+                break;
+            case MainActivity.RATIO_45:
+                width = (height * 4) / 5;
+                break;
+            case MainActivity.RATIO_23:
+                width = (height * 2) / 3;
+                break;
+            case MainActivity.RATIO_916:
+                width = (height * 9) / 16;
+                break;
+            default:
+                width = height;
+                break;
+
+        }
+        return width;
+    }
+
     public static void saveImage(Context context, Bitmap bitmap) {
         String fileName = "PhotoCollage_" + getCurrentDate() + ".jpg";
         if (bitmap != null) {
@@ -131,10 +173,11 @@ public class Utils {
             file = new File(Environment.getExternalStorageDirectory() + "/PhotoCollage", fileName);
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fileOutputStream);
 
                 fileOutputStream.flush();
                 fileOutputStream.close();
+                bitmap.recycle();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception exception) {
@@ -145,8 +188,8 @@ public class Utils {
             values.put(MediaStore.Images.Media.TITLE, fileName);
             values.put(MediaStore.Images.Media.DESCRIPTION, "PhotoCollage");
             values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
-            values.put(MediaStore.Images.ImageColumns.BUCKET_ID, file.toString().toLowerCase(Locale.US).hashCode());
-            values.put(MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME, file.getName().toLowerCase(Locale.US));
+            values.put(MediaStore.Images.ImageColumns.BUCKET_ID, file.toString().hashCode());
+            values.put(MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME, file.getName().toString());
             values.put("_data", file.getAbsolutePath());
 
             ContentResolver cr = context.getContentResolver();

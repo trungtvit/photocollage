@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">TestPhoto</string>
+    <string name="app_name">Photo Collage</string>
+    <string name="create_photo">Ghép ảnh</string>
+    <string name="msg_progress_dialog">Vui lòng chờ...</string>
+    <string name="msg_image_save_success">Ảnh đã được lưu</string>
+    <string name="delete_image">Xóa ảnh</string>
+    <string name="save_image">Lưu ảnh</string>
+    <string name="title_dialog_delete">Xác nhận xóa</string>
+    <string name="msg_dialog_delete">Bạn có muốn làm lại không ?</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
 </resources>

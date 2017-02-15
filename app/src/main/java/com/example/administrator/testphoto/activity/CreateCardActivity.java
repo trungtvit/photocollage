@@ -1,21 +1,24 @@
 package com.example.administrator.testphoto.activity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.administrator.testphoto.R;
 import com.example.administrator.testphoto.customviews.MultiTouchListener;
@@ -27,6 +30,8 @@ import com.example.administrator.testphoto.utils.Utils;
  */
 
 public class CreateCardActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int WIDTH = 4096;
+
     private LinearLayout lnFrame;
     private ScalingImageView img1;
     private ScalingImageView img2;
@@ -49,11 +54,18 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
     private int width = 0;
     private int ratio = 0;
     private int id = 0;
+    private int widthLayout = 0;
+    private int widthBitmap = 0;
+    private int heightBitmap = 0;
+    private Bitmap bm = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_card);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.create_photo));
+
         id = getIntent().getIntExtra("ID", 0);
         ratio = getIntent().getIntExtra("RATIO", 0);
         mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
@@ -83,13 +95,19 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
         if (img7 != null)
             img7.setOnClickListener(this);
 
-
         ViewTreeObserver observer = lnFrame.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 width = lnFrame.getWidth();
-                layoutParams = new LinearLayout.LayoutParams(width, (int) Utils.calHeight(ratio, width));
+                widthLayout = width;
+                if (ratio == MainActivity.RATIO_34) {
+                    widthLayout = widthLayout - 150;
+                }
+                if (ratio == MainActivity.RATIO_916 || ratio == MainActivity.RATIO_23) {
+                    widthLayout = widthLayout - 300;
+                }
+                layoutParams = new LinearLayout.LayoutParams(widthLayout, (int) Utils.calHeight(ratio, widthLayout));
                 lnFrame.setLayoutParams(layoutParams);
                 lnFrame.getViewTreeObserver().removeGlobalOnLayoutListener(
                         this);
@@ -107,15 +125,93 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.actionSave:
-                Utils.saveImage(this,createBitmap(lnFrame));
+            case android.R.id.home:
                 finish();
                 return true;
-
+            case R.id.actionSave:
+                new ImageSaver().execute();
+                return true;
+            case R.id.actionDelete:
+                deleteImage();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
+    }
+
+
+    private class ImageSaver extends AsyncTask<Void, Void, Void> {
+        Context context;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            context = CreateCardActivity.this;
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage(context.getResources().getString(R.string.msg_progress_dialog));
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            Utils.saveImage(context, createBitmap(lnFrame));
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressDialog.dismiss();
+            bm.recycle();
+            Toast.makeText(context, context.getResources().getString(R.string.msg_image_save_success), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
+
+    private void deleteImage() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle(getResources().getString(R.string.title_dialog_delete));
+        dialog.setMessage(getResources().getString(R.string.msg_dialog_delete));
+        dialog.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                img1.setOnTouchListener(null);
+                img1.setImageBitmap(null);
+                if (img2 != null) {
+                    img2.setOnTouchListener(null);
+                    img2.setImageBitmap(null);
+                }
+                if (img3 != null) {
+                    img3.setOnTouchListener(null);
+                    img3.setImageBitmap(null);
+                }
+                if (img4 != null) {
+                    img4.setOnTouchListener(null);
+                    img4.setImageBitmap(null);
+                }
+                if (img5 != null) {
+                    img5.setOnTouchListener(null);
+                    img5.setImageBitmap(null);
+                }
+                if (img6 != null) {
+                    img6.setOnTouchListener(null);
+                    img6.setImageBitmap(null);
+                }
+                if (img7 != null) {
+                    img7.setOnTouchListener(null);
+                    img7.setImageBitmap(null);
+                }
+            }
+        });
+        dialog.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
     }
 
     private void chooserImage() {
@@ -126,10 +222,21 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
 
 
     public Bitmap createBitmap(View view) {
-        Bitmap bitmap = Bitmap.createBitmap(width, (int) Utils.calHeight(ratio, width), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(widthLayout, (int) Utils.calHeight(ratio, widthLayout), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         view.draw(canvas);
-        return bitmap;
+        if (widthLayout > (int) Utils.calHeight(ratio, widthLayout)) {
+            widthBitmap = WIDTH;
+            heightBitmap = (int) Utils.calHeightForBitmap(ratio, widthBitmap);
+        } else if (widthLayout < (int) Utils.calHeight(ratio, widthLayout)) {
+            heightBitmap = WIDTH;
+            widthBitmap = (int) Utils.calWidthForBitmap(ratio, heightBitmap);
+        } else {
+            widthBitmap = WIDTH;
+            heightBitmap = WIDTH;
+        }
+        bm = Bitmap.createScaledBitmap(bitmap, widthBitmap, heightBitmap, false);
+        return bm;
     }
 
     @Override
