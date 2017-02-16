@@ -174,9 +174,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showDialogFrame() {
-        final Dialog dialog = new Dialog(this, R.style.CustomDialog);
+        final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
         dialog.setContentView(R.layout.dialog_ratio);
+        dialog.getWindow().getDecorView().setBackgroundResource(android.R.color.transparent);
+        dialog.getWindow().setDimAmount(0.0f);
         final TextView tvRatio11 = (TextView) dialog.findViewById(R.id.tvRatio11);
         final TextView tvRatio43 = (TextView) dialog.findViewById(R.id.tvRatio43);
         final TextView tvRatio34 = (TextView) dialog.findViewById(R.id.tvRatio34);
