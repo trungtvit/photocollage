@@ -72,8 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         File folder = new File(Environment.getExternalStorageDirectory().getPath() + "/PhotoCollage/");
         allFiles = folder.listFiles();
-        if (allFiles.length > 0) {
-            new SingleMediaScanner(this, allFiles[0]);
+        if (allFiles != null) {
+            if (allFiles.length > 0) {
+                new SingleMediaScanner(this, allFiles[0]);
+            }
         }
 
         tvRatio = (TextView) findViewById(R.id.tvRatio);
