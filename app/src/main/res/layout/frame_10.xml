@@ -11,21 +11,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_border_frame"
-        android:layout_weight="1"
-        android:background="@color/bg_image">
-
-        <com.example.administrator.testphoto.customviews.ScalingImageView
-            android:id="@+id/img1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_border_frame"
+            android:layout_weight="1"
+            android:background="@color/bg_image">
+
+            <com.example.administrator.testphoto.customviews.ScalingImageView
+                android:id="@+id/img1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +52,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_border_frame"
+        android:layout_weight="1"
+        android:background="@color/bg_image">
+
+        <com.example.administrator.testphoto.customviews.ScalingImageView
+            android:id="@+id/img4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +81,20 @@
             android:background="@color/bg_image">
 
             <com.example.administrator.testphoto.customviews.ScalingImageView
-                android:id="@+id/img4"
+                android:id="@+id/img5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_border_frame"
+            android:layout_weight="1"
+            android:background="@color/bg_image">
+
+            <com.example.administrator.testphoto.customviews.ScalingImageView
+                android:id="@+id/img6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     File[] allFiles;
 
     private int ratio = 0;
-    int images[] = {R.drawable.ok1, R.drawable.ok2,
-            R.drawable.ok1, R.drawable.ok2, R.drawable.ok1,
-            R.drawable.ok2, R.drawable.ok1, R.drawable.ok2,
-            R.drawable.ok1, R.drawable.ok1, R.drawable.ok2,
-            R.drawable.ok1, R.drawable.ok2, R.drawable.ok1,
-            R.drawable.ok2, R.drawable.ok1, R.drawable.ok2,
-            R.drawable.a};
+    int images[] = {R.drawable.frame_00, R.drawable.frame_01,
+            R.drawable.frame_02, R.drawable.frame_03, R.drawable.frame_04,
+            R.drawable.frame_05, R.drawable.frame_06, R.drawable.frame_07,
+            R.drawable.frame_08, R.drawable.frame_09, R.drawable.frame_10,
+            R.drawable.frame_11, R.drawable.frame_12, R.drawable.frame_13,
+            R.drawable.frame_14, R.drawable.frame_15, R.drawable.frame_16,
+            R.drawable.frame_17};
     private int id[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
 
     public int getRatio() {
