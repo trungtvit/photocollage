@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("1:1");
+                tvRatio.setText("1x1");
                 dialog.dismiss();
             }
         });
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("4:3");
+                tvRatio.setText("4x3");
                 dialog.dismiss();
             }
         });
@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("3:4");
+                tvRatio.setText("3x4");
                 dialog.dismiss();
             }
         });
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("4:5");
+                tvRatio.setText("4x5");
                 dialog.dismiss();
             }
         });
@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("3:2");
+                tvRatio.setText("3x2");
                 dialog.dismiss();
             }
         });
@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(true);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("2:3");
+                tvRatio.setText("2x3");
                 dialog.dismiss();
             }
         });
@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(true);
                 tvRatio169.setSelected(false);
-                tvRatio.setText("9:16");
+                tvRatio.setText("9x16");
                 dialog.dismiss();
             }
         });
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRatio23.setSelected(false);
                 tvRatio916.setSelected(false);
                 tvRatio169.setSelected(true);
-                tvRatio.setText("16:9");
+                tvRatio.setText("16x9");
                 dialog.dismiss();
             }
         });

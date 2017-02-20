@@ -48,7 +48,7 @@
             android:layout_height="50dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="1:1"
+            android:text="1x1"
             android:textColor="#ffffff" />
     </LinearLayout>
     <View

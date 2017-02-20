@@ -32,7 +32,7 @@
             android:layout_height="60dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="1:1"
+            android:text="1x1"
             android:textColor="#ffffff" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="4:3"
+            android:text="4x3"
             android:textColor="#ffffff" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="3:4"
+            android:text="3x4"
             android:textColor="#ffffff" />
 
 
@@ -63,7 +63,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="4:5"
+            android:text="4x5"
             android:textColor="#ffffff" />
 
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="40dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="3:2"
+            android:text="3x2"
             android:textColor="#ffffff" />
 
         <TextView
@@ -92,7 +92,7 @@
 
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="2:3"
+            android:text="2x3"
             android:textColor="#ffffff" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="9:16"
+            android:text="9x16"
             android:textColor="#ffffff" />
 
         <TextView
@@ -112,7 +112,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/bg_ratio"
             android:gravity="center"
-            android:text="16:9"
+            android:text="16x9"
             android:textColor="#ffffff" />
     </LinearLayout>
 

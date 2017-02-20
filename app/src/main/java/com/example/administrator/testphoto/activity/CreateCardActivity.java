@@ -102,10 +102,13 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
                 width = lnFrame.getWidth();
                 widthLayout = width;
                 if (ratio == MainActivity.RATIO_34) {
-                    widthLayout = widthLayout - 150;
+                    widthLayout = widthLayout - 75;
                 }
-                if (ratio == MainActivity.RATIO_916 || ratio == MainActivity.RATIO_23) {
-                    widthLayout = widthLayout - 300;
+                if (ratio == MainActivity.RATIO_916) {
+                    widthLayout = widthLayout - 180;
+                }
+                if( ratio == MainActivity.RATIO_23){
+                    widthLayout = widthLayout - 150;
                 }
                 layoutParams = new LinearLayout.LayoutParams(widthLayout, (int) Utils.calHeight(ratio, widthLayout));
                 lnFrame.setLayoutParams(layoutParams);
