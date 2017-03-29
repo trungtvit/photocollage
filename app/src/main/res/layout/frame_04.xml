@@ -15,7 +15,7 @@
         android:layout_weight="1"
         android:background="@color/bg_image">
 
-        <com.example.administrator.testphoto.customviews.ScalingImageView
+        <com.picturecollage.customviews.ScalingImageView
             android:id="@+id/img1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -28,7 +28,7 @@
         android:layout_weight="1"
         android:background="@color/bg_image">
 
-        <com.example.administrator.testphoto.customviews.ScalingImageView
+        <com.picturecollage.customviews.ScalingImageView
             android:id="@+id/img2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
