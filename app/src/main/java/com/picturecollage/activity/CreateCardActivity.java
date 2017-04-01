@@ -64,6 +64,7 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_card);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
         getSupportActionBar().setTitle(getResources().getString(R.string.create_photo));
 
         id = getIntent().getIntExtra("ID", 0);
@@ -238,7 +239,7 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
             widthBitmap = WIDTH;
             heightBitmap = WIDTH;
         }
-        bm = Bitmap.createScaledBitmap(bitmap, widthBitmap, heightBitmap, false);
+        bm = Bitmap.createScaledBitmap(Utils.resizeBitmap(bitmap), widthBitmap, heightBitmap, false);
         return bm;
     }
 

@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -20,6 +21,11 @@ import java.util.Calendar;
  */
 
 public class Utils {
+
+    private static final int SIZE_3M = 3145728;
+    private static final int SIZE_5M = 5038848;
+    private static final int SIZE_8M = 7990272;
+
     public static int setAddLayout(int id) {
         int resource = 0;
         switch (id) {
@@ -263,5 +269,25 @@ public class Utils {
         int year = c.get(Calendar.YEAR);
         date = year + "_" + month + "_" + day + "_" + hour + "_" + minute + "_" + seconds;
         return date;
+    }
+
+    public static Bitmap resizeBitmap(Bitmap bitmap) {
+        while (SIZE_5M <= bitmap.getWidth() * bitmap.getHeight()) {
+            if (Build.VERSION_CODES.JELLY_BEAN >= Build.VERSION.SDK_INT) {
+                if (SIZE_8M <= bitmap.getWidth() * bitmap.getHeight()) {
+                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.4), (int) (bitmap.getHeight() * 0.4), false);
+                } else {
+                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.6), (int) (bitmap.getHeight() * 0.6), false);
+                }
+            } else {
+                if (SIZE_8M <= bitmap.getWidth() * bitmap.getHeight()) {
+                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.6), (int) (bitmap.getHeight() * 0.6), false);
+                } else {
+                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.8), (int) (bitmap.getHeight() * 0.8), false);
+                }
+            }
+
+        }
+        return bitmap;
     }
 }
