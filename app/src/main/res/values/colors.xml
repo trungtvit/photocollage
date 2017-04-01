@@ -9,4 +9,6 @@
     <color name="transparent">#00000000</color>
     <color name="bg_image">#A9A7A5</color>
     <color name="bg_main">#5A5A5A</color>
+    <color name="text_color_actionbar">#000000</color>
+    <color name="actionbar_color">#FFF200</color>
 </resources>

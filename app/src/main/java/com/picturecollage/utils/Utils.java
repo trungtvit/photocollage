@@ -77,6 +77,60 @@ public class Utils {
             case 17:
                 resource = R.layout.frame_17;
                 break;
+            case 18:
+                resource = R.layout.frame_18;
+                break;
+            case 19:
+                resource = R.layout.frame_19;
+                break;
+            case 20:
+                resource = R.layout.frame_20;
+                break;
+            case 21:
+                resource = R.layout.frame_21;
+                break;
+            case 22:
+                resource = R.layout.frame_22;
+                break;
+            case 23:
+                resource = R.layout.frame_23;
+                break;
+            case 24:
+                resource = R.layout.frame_24;
+                break;
+            case 25:
+                resource = R.layout.frame_25;
+                break;
+            case 26:
+                resource = R.layout.frame_26;
+                break;
+            case 27:
+                resource = R.layout.frame_27;
+                break;
+            case 28:
+                resource = R.layout.frame_28;
+                break;
+            case 29:
+                resource = R.layout.frame_29;
+                break;
+            case 30:
+                resource = R.layout.frame_30;
+                break;
+            case 31:
+                resource = R.layout.frame_31;
+                break;
+            case 32:
+                resource = R.layout.frame_32;
+                break;
+            case 33:
+                resource = R.layout.frame_33;
+                break;
+            case 34:
+                resource = R.layout.frame_34;
+                break;
+            case 35:
+                resource = R.layout.frame_35;
+                break;
             default:
                 resource = R.layout.frame_00;
                 break;
