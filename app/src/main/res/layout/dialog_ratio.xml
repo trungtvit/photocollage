@@ -5,19 +5,14 @@
     android:background="@drawable/bg_dialog"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/line_blue" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Vui lòng chọn một tỉ lệ :"
-        android:textColor="@color/text_white" />
+        android:background="@drawable/bg_title_dialog"
+        android:padding="15dp"
+        android:text="@string/title_dialog_ratio"
+        android:textColor="@color/text_color_actionbar"
+        android:textSize="@dimen/text_size_title_dialog" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,9 +111,4 @@
             android:textColor="#ffffff" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/line_blue" />
 </LinearLayout>

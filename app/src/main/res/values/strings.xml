@@ -7,6 +7,7 @@
     <string name="save_image">Lưu ảnh</string>
     <string name="title_dialog_delete">Xác nhận xóa</string>
     <string name="msg_dialog_delete">Bạn có muốn làm lại không ?</string>
+    <string name="title_dialog_ratio">Vui lòng chọn tỉ lệ</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
 </resources>
