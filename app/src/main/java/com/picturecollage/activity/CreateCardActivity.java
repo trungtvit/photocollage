@@ -240,7 +240,6 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
             heightBitmap = WIDTH;
         }
         bm = Bitmap.createScaledBitmap(bitmap, widthBitmap, heightBitmap, false);
-        bm.recycle();
         return bm;
     }
 
