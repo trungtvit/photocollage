@@ -108,7 +108,7 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
                 if (ratio == MainActivity.RATIO_916) {
                     widthLayout = widthLayout - 180;
                 }
-                if( ratio == MainActivity.RATIO_23){
+                if (ratio == MainActivity.RATIO_23) {
                     widthLayout = widthLayout - 150;
                 }
                 layoutParams = new LinearLayout.LayoutParams(widthLayout, (int) Utils.calHeight(ratio, widthLayout));
@@ -239,7 +239,8 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
             widthBitmap = WIDTH;
             heightBitmap = WIDTH;
         }
-        bm = Bitmap.createScaledBitmap(Utils.resizeBitmap(bitmap), widthBitmap, heightBitmap, false);
+        bm = Bitmap.createScaledBitmap(bitmap, widthBitmap, heightBitmap, false);
+        bm.recycle();
         return bm;
     }
 
@@ -330,7 +331,9 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
                 if (data != null) {
                     Uri uri = data.getData();
                     try {
-                        Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        Bitmap bm = Utils.getResizedBitmap(bitmap);
+
                         if (isImg1) {
                             img1.setImageBitmap(bm);
                             isImg1 = false;

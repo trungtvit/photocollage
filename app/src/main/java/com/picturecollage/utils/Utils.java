@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Build;
+import android.graphics.Matrix;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -271,23 +271,17 @@ public class Utils {
         return date;
     }
 
-    public static Bitmap resizeBitmap(Bitmap bitmap) {
-        while (SIZE_5M <= bitmap.getWidth() * bitmap.getHeight()) {
-            if (Build.VERSION_CODES.JELLY_BEAN >= Build.VERSION.SDK_INT) {
-                if (SIZE_8M <= bitmap.getWidth() * bitmap.getHeight()) {
-                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.4), (int) (bitmap.getHeight() * 0.4), false);
-                } else {
-                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.6), (int) (bitmap.getHeight() * 0.6), false);
-                }
-            } else {
-                if (SIZE_8M <= bitmap.getWidth() * bitmap.getHeight()) {
-                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.6), (int) (bitmap.getHeight() * 0.6), false);
-                } else {
-                    bitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.8), (int) (bitmap.getHeight() * 0.8), false);
-                }
-            }
+    public static Bitmap getResizedBitmap(Bitmap bm) {
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        float scaleWidth = ((float) (width / 2)) / width;
+        float scaleHeight = ((float) (height / 2)) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
 
-        }
-        return bitmap;
+        Bitmap resizedBitmap = Bitmap.createBitmap(
+                bm, 0, 0, width, height, matrix, false);
+        bm.recycle();
+        return resizedBitmap;
     }
 }
